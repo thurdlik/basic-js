@@ -1,13 +1,15 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function createDreamTeam(members) {
+  if (!members) {
+    return false;
+  }
   var result = [];
-  for (i = 0; i < members.length; i++) {
+  for (let i = 0; i < members.length; i++) {
     if (typeof(members[i]) === 'string') {
-      result.push(members[i].charAt(0));
+      let stroka = members[i].trim();
+      result.push(stroka.charAt(0).toUpperCase());
     }
   }
-  return console.log(result.sort().join(''));
+  return result.sort().join('').toString();
 };
-
-createDreamTeam(['Khayrut', true, 14, 'Leonid', 'Ilham', 'Husainov']);
